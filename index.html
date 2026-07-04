@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robo-Sketch</title>
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <!-- Three.js Canvas -->
+  <canvas id="webgl"></canvas>
+
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-glitch" data-text="ROBO-SKETCH">ROBO-SKETCH</div>
+      <div class="loader-sub">INITIALIZING 3D MECH ENGINE...</div>
+      <div class="loader-bar-container">
+        <div id="loader-bar"></div>
+      </div>
+      <div id="loader-text">Loading Assets: 0%</div>
+    </div>
+  </div>
+
+  <!-- HUD Overlay -->
+  <div id="hud">
+    <!-- Header -->
+    <header class="hud-header glass">
+      <div class="logo-container">
+        <div class="logo-icon"></div>
+        <div class="logo-text">
+          <h1>ROBO-SKETCH v0.0.1</h1>
+          <span>BIPEDAL MECH INTERFACE</span>
+        </div>
+      </div>
+      <div class="system-status">
+        <span class="pulse-dot"></span>
+        <span class="status-text">SYSTEM READY</span>
+      </div>
+    </header>
+
+    <!-- Controls Panel (Left) -->
+    <div class="hud-panel controls-panel glass">
+      <h2>CONTROLS</h2>
+      <div class="control-keys">
+        <div class="keyboard-row">
+          <div class="key" id="key-w">W</div>
+        </div>
+        <div class="keyboard-row">
+          <div class="key" id="key-a">A</div>
+          <div class="key" id="key-s">S</div>
+          <div class="key" id="key-d">D</div>
+        </div>
+        <div class="keyboard-row spacer"></div>
+        <div class="keyboard-row space-container">
+          <div class="key space-key" id="key-space">SPACEBAR (JUMP)</div>
+        </div>
+        <div class="keyboard-row run-container">
+          <div class="key run-key" id="key-shift">SHIFT (RUN)</div>
+        </div>
+      </div>
+      <div class="hud-divider"></div>
+      <div class="control-extra">
+        <div class="key-help"><span>WASD</span> Move Character</div>
+        <div class="key-help"><span>MOUSE</span> Rotate Camera (Hold Left Click)</div>
+        <div class="key-help"><span>C</span> Toggle View Mode</div>
+        <div class="view-badge" id="camera-mode-badge">Third-Person Follow</div>
+      </div>
+    </div>
+
+    <!-- Diagnostics Panel (Right) -->
+    <div class="hud-panel diagnostics-panel glass">
+      <h2>DIAGNOSTICS</h2>
+      
+      <!-- Animation Tracker -->
+      <div class="diagnostic-item">
+        <span class="label">ACTIVE STATE</span>
+        <span class="value highlight" id="active-state">IDLE</span>
+      </div>
+      <div class="animation-progress-container">
+        <div id="animation-progress-bar"></div>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <!-- Telemetry Info -->
+      <div class="telemetry-group">
+        <div class="diagnostic-item small">
+          <span class="label">POSITION X</span>
+          <span class="value mono" id="pos-x">0.00</span>
+        </div>
+        <div class="diagnostic-item small">
+          <span class="label">POSITION Y</span>
+          <span class="value mono" id="pos-y">0.00</span>
+        </div>
+        <div class="diagnostic-item small">
+          <span class="label">POSITION Z</span>
+          <span class="value mono" id="pos-z">0.00</span>
+        </div>
+      </div>
+
+      <!-- Speedometer -->
+      <div class="speed-container">
+        <div class="diagnostic-item">
+          <span class="label">SPEED</span>
+          <span class="value mono" id="speed-val">0.0 km/h</span>
+        </div>
+        <div class="speed-bar-bg">
+          <div id="speed-bar"></div>
+        </div>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <!-- Animations Log -->
+      <div class="animations-list-container">
+        <h3>AVAILABLE CLIPS</h3>
+        <ul id="animations-list">
+          <li class="loading-item">Scanning model...</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
