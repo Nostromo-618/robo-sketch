@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
+const ASSET_BASE = import.meta.env.BASE_URL;
+
 // --- Global Variables ---
 let scene, camera, renderer, clock;
 let orbitControls;
@@ -259,7 +261,7 @@ function loadAssets() {
 
   // Load Character model mesh
   gltfLoader.load(
-    '/Meshy_AI_V02_Mech_biped_Character_output.glb',
+    `${ASSET_BASE}Meshy_AI_V02_Mech_biped_Character_output.glb`,
     (gltf) => {
       characterGltf = gltf;
       characterLoaded = true;
@@ -278,7 +280,7 @@ function loadAssets() {
 
   // Load Animation clips GLB
   gltfLoader.load(
-    '/Meshy_AI_V02_Mech_biped_Meshy_AI_Meshy_Merged_Animations.glb',
+    `${ASSET_BASE}Meshy_AI_V02_Mech_biped_Meshy_AI_Meshy_Merged_Animations.glb`,
     (gltf) => {
       animationsGltf = gltf;
       animationsLoaded = true;
